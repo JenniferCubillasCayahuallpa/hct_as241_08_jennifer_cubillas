@@ -1,0 +1,37 @@
+services:
+  app:
+    build: .
+    container_name: cubillasjennifer-app
+    ports:
+      - "8091:8090"
+    environment:
+      APP_PORT: 8090
+      DB_URL: ${DB_URL}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - cubillasjennifer-net
+
+  mysql:
+    image: mysql:8.0
+    container_name: cubillasjennifer-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hackathon
+    networks:
+      - cubillasjennifer-net
+
+  nginx:
+    image: nginx:alpine
+    container_name: cubillasjennifer-nginx
+    ports:
+      - "8092:80"
+    networks:
+      - cubillasjennifer-net
+
+networks:
+  cubillasjennifer-net:
+    driver: bridge
+

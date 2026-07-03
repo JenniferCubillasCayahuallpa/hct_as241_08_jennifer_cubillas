@@ -1,0 +1,20 @@
+server:
+  port: ${APP_PORT:8090}
+
+spring:
+  application:
+    name: hackathon
+  datasource: 
+    url: ${DB_URL:jdbc:postgresql://ep-still-fog-at9pf5jm.c-9.us-east-1.aws.neon.tech/hackathon?user=neondb_owner&password=npg_I8pshOzYl7vg&sslmode=require}
+
+    username: ${DB_USERNAME:neondb_owner}
+    password: ${DB_PASSWORD:npg_I8pshOzYl7vg}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+
+
